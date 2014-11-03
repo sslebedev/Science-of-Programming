@@ -1,0 +1,16 @@
+_ReSharper.t1_commandline
+bin
+Debug
+obj
+Release
+resources.aps
+t1_commandline.cbp
+t1_commandline.depend
+t1_commandline.layout
+t1_commandline.sdf
+t1_commandline.sln
+t1_commandline.v11.suo
+t1_commandline.vcxproj
+t1_commandline.vcxproj.filters
+t1_commandline.vcxproj.user
+.idea
