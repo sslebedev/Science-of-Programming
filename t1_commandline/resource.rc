@@ -1,0 +1,36 @@
+#include <windows.h>
+#include "resource.h"
+
+MAINMENU MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Open",      IDM_OPEN
+        MENUITEM SEPARATOR
+        MENUITEM "&Exit",      IDM_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Line Wrap", IDM_LINEWRAP
+    END
+END
+
+STARTUP_DLG DIALOG 50, 50, 300, 125
+CAPTION "SSL Notepad"
+STYLE DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+FONT 10, "Tahoma"
+BEGIN
+    CONTROL "This is a simple file viewer program by Sergei S. Lebedev. Licensed under the GPLv2", -1, "static", WS_VISIBLE | SS_CENTER, 80, 10, 140, 40
+    
+    CONTROL "Cmd",        -1,           "static", WS_VISIBLE | WS_CHILD | SS_LEFT, 5,  55, 50, 13
+    CONTROL "CmdV",       IDC_CMD,      "static", WS_VISIBLE | WS_CHILD | SS_LEFT, 55, 55, 50, 13
+
+    CONTROL "Line Wrap",  -1,           "static", WS_VISIBLE | WS_CHILD | SS_LEFT, 5,  68, 50, 13
+    CONTROL "",           IDC_LINEWRAP, "button", WS_VISIBLE | WS_CHILD | SS_LEFT | BS_AUTOCHECKBOX,   55, 65, 50, 13
+
+    CONTROL "File Name",  -1,           "static", WS_VISIBLE | WS_CHILD | SS_LEFT, 5,  81, 50, 13
+    CONTROL "File NameV", IDC_FILENAME, "static", WS_VISIBLE | WS_CHILD | SS_LEFT | WS_BORDER | WS_GROUP, 55, 81, 180, 10
+    CONTROL "Open", IDC_OPEN, "button", BS_PUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 240, 81, 50, 10  
+    
+    CONTROL "Ok", IDC_OK, "button", BS_DEFPUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 125, 110, 50, 13  
+END
