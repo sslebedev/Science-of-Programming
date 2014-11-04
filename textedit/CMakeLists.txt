@@ -27,8 +27,6 @@ set(TE_SOURCES main.cpp textedit.cpp)
 set(TE_MOCH textedit.h)
 set(TE_RESOURCES textedit.qrc)
 
-set(PROJECT_BINARY_DIR ${PROJECT_SOURCE_DIR})
-
 qt4_wrap_cpp(TE_HEADERS_MOC ${TE_MOCH})
 qt4_add_resources(TE_RESOURCES_RCC ${TE_RESOURCES})
 
