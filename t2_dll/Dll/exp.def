@@ -1,0 +1,4 @@
+LIBRARY test_d
+EXPORTS
+    FooA
+    FooSelect

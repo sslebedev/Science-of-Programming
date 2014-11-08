@@ -1,4 +1,4 @@
-set(D_FILES main.cpp writer.h cpp/writer.cpp)
+set(D_FILES main.cpp writer.h cpp/writer.cpp exp.def)
 
 add_definitions(-DT2_DLL_EXPORTS)
 

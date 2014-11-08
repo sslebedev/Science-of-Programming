@@ -5,7 +5,14 @@
 #include <algorithm>
 #include <windows.h>
 
-typedef void (*FooType)();
+#include "../Dll/writer.h"
+
+bool SelectBar(const void *obj, int idx)
+{
+    int &bar = *((int*)(obj));
+
+    return bar >= 0 && idx < 5;
+}
 
 int main()
 {
@@ -40,6 +47,31 @@ int main()
         } else {
             std::cout << "Function " + functions[i] + " not found." << std::endl;
         }
+    }
+
+    // Selector example
+    std::cout << "Test FooSelect" << std::endl;
+    FooSelectType f = (FooSelectType)GetProcAddress(hDll, "FooSelect");
+    if (!f) {
+        std::cout << "Function FooSelect not found." << std::endl;
+        return 0;
+    }
+
+    int s[] = {0, -1, 1, -2, 2, -3, 3, -4, 4};
+    int a;
+    int *sp[] = {s + 0, s + 1, s + 2, s + 3, s + 4, s + 5, s + 6, s + 7, s + 8};
+    int *dp[sizeof(sp)];
+    int l;
+
+    for (int i = 0; i < sizeof(sp) / sizeof(sp[0]); ++i) {
+        std::cout << "\t Src[" << i << "]: "<< *sp[i] << std::endl;
+    }
+
+    std::cout << "Calling Select(): bar >= 0 && idx < 5" << std::endl;
+    f((void **)sp, sizeof(sp) / sizeof(sp[0]), (void **)dp, sizeof(dp) / sizeof(dp[0]), &l, SelectBar);
+
+    for (int i = 0; i < l; ++i) {
+        std::cout << "\t Selected: " << *dp[i] << std::endl;
     }
 
     FreeLibrary(hDll);
