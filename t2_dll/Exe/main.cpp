@@ -58,9 +58,8 @@ int main()
     }
 
     int s[] = {0, -1, 1, -2, 2, -3, 3, -4, 4};
-    int a;
     int *sp[] = {s + 0, s + 1, s + 2, s + 3, s + 4, s + 5, s + 6, s + 7, s + 8};
-    int *dp[sizeof(sp)];
+    int *dp[sizeof(sp)/ sizeof(sp[0])];
     int l;
 
     for (int i = 0; i < sizeof(sp) / sizeof(sp[0]); ++i) {
